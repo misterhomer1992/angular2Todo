@@ -1,0 +1,11 @@
+body {
+    background-image: url(images/background.jpg);
+}
+
+.color--white {
+    color: #fff;
+}
+
+.table-striped tbody tr {
+    background-color: rgba(249, 249, 249, 0.6) !important;
+}
