@@ -15,3 +15,7 @@
 .todo-task-component__list__col--last {
     text-align: right;
 }
+
+.fa-remove {
+    color: #d9534f;
+}

@@ -3,11 +3,15 @@ import {ArrayUtility} from '../utility/array';
 
 class Task {
     task: string;
-    hasAccess: boolean;
+    status: string;
 
-    constructor(task: string, hasAccess: boolean = true) {
+    constructor(task: string = '', status: string = "started") {
         this.task = task;
-        this.hasAccess = hasAccess;
+        this.status = status;
+    }
+
+    toggleStatus() :void {
+        this.status = this.status == 'started' ? 'completed' : 'started';
     }
 }
 
@@ -17,44 +21,33 @@ class Task {
     styleUrls: ['./app/app.component.css']
 })
 
-export class AppComponent {
 
+export class AppComponent {
     tasks:Task[];
-    taskName:string;
+    currentTask: Task = new Task();
 
     constructor() {
-
         this.tasks = [
             new Task("Buy a milk"),
-            new Task("Admin task", false),
+            new Task("Admin task"),
             new Task("Finish with cleaning")
         ];
     }
 
     //events
-    event_addNewTask() {
-        let newTask:string = this.taskName;
-
-        if (newTask.length === 0) {
+    action_addTask() {
+        if (this.currentTask.task.length === 0) {
             return;
         }
 
-        this.addNewTask(newTask);
-
-        console.info(`added new task ${newTask}`);
-        this.taskName = '';
+        this.tasks.push(this.currentTask);
+       // this.tasks = [...this.tasks, this.currentTask];
+        console.info(`added new task ${this.currentTask.task}`);
+        this.currentTask = new Task();
     }
 
-    event_addNewTaskOnInput(event) {
-        if(event.which === 13) {
-           this.event_addNewTask();
-        }
-    }
-
-    addNewTask(taskName:string) {
-        let newTask: Task = new Task(taskName);
-
-        this.tasks.push(newTask);
+    event__onSubmit_addNewTask() {
+        this.action_addTask();
     }
 
     event_removeTask(task: Task) {

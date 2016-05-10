@@ -2,16 +2,18 @@
     <div class="row">
         <div class="col-lg-3"></div>
         <div class="col-lg-6">
-            <div class="input-group todo-task-component__input-wrapper">
-                <input [(ngModel)]="taskName" (keydown)="event_addNewTaskOnInput($event)" type="text" class="form-control" placeholder="task...">
-              <span class="input-group-btn">
-                  <button class="btn btn-primary" (click)="event_addNewTask()" type="button">Add task</button>
-              </span>
-            </div>
+            <form (submit)="event__onSubmit_addNewTask()">
+                <div class="input-group todo-task-component__input-wrapper">
+                    <input [(ngModel)]="currentTask.task" type="text" class="form-control" placeholder="task...">
+                    <div class="input-group-btn">
+                        <button type="submit" class="btn btn-primary">Add task</button>
+                    </div>
+                </div>
+            </form>
         </div>
         <div class="col-lg-3"></div>
     </div>
-    <div class="todo-task-component__list">
+    <div class="todo-task-component__list" *ngIf="tasks.length > 0">
         <table class="table table-striped todo-task-component__list__table">
             <thead>
             <tr class="color--white">
@@ -25,7 +27,10 @@
                 <td>{{index + 1}}</td>
                 <td>{{taskItem.task}}</td>
                 <td class="todo-task-component__list__col--last">
-                    <button *ngIf="taskItem.hasAccess" class="btn btn-danger" (click)="event_removeTask(taskItem)">delete</button>
+                    <button (click)="taskItem.toggleStatus()" class="btn" [ngClass]="{'btn-danger': taskItem.status == 'completed', 'btn-info': taskItem.status == 'started'}">
+                        {{taskItem.status}}
+                    </button>
+                    <button (click)="event_removeTask(taskItem)" class="fa fa-remove"></button>
                 </td>
             </tr>
             </tbody>
