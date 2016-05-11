@@ -11,24 +11,5 @@
         </div>
         <div class="col-lg-3"></div>
     </div>
-    <div class="todo-task-component__list">
-        <table class="table table-striped todo-task-component__list__table">
-            <thead>
-            <tr class="color--white">
-                <th>№</th>
-                <th>Task</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let taskItem of tasks; let index = index">
-                <td>{{index + 1}}</td>
-                <td>{{taskItem.task}}</td>
-                <td class="todo-task-component__list__col--last">
-                    <button *ngIf="taskItem.hasAccess" class="btn btn-danger" (click)="event_removeTask(taskItem)">delete</button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+    <todo-list [tasks]="tasks"></todo-list>
 </div>

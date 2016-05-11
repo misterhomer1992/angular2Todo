@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
-import {ArrayUtility} from '../utility/array';
+import { TodoListComponent } from './todo-list/todo-list.component';
 
-class Task {
+export class Task {
     task: string;
     hasAccess: boolean;
 
@@ -14,7 +14,8 @@ class Task {
 @Component({
     selector: 'todo-app',
     templateUrl: './app/app.component.html',
-    styleUrls: ['./app/app.component.css']
+    styleUrls: ['./app/app.component.css'],
+    directives: [TodoListComponent]
 })
 
 export class AppComponent {
