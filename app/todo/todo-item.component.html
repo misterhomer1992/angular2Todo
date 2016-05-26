@@ -1,0 +1,17 @@
+<!--<td>{{index + 1}}</td>-->
+<!--<td>{{taskItem.task}}</td>-->
+<!--<td class="todo-task-component__list__col&#45;&#45;last">-->
+    <!--<button (click)="taskItem.toggleStatus()" class="btn" [ngClass]="{'btn-danger': taskItem.status == 'completed', 'btn-info': taskItem.status == 'started'}">-->
+        <!--{{taskItem.status}}-->
+    <!--</button>-->
+    <!--<button (click)="event_removeTask(taskItem)" class="fa fa-remove"></button>-->
+<!--</td>-->
+
+<td>index</td>
+<td>{{todo.task}}</td>
+<td class="todo-task-component__list__col--last">
+    <button (click)="event__statusBtn_click()" class="btn" [ngClass]="{'btn-danger': todo.status == 'completed', 'btn-info': todo.status == 'started'}">
+        {{todo.status}}
+    </button>
+    <button (click)="event__deleteBtn_click()" class="fa fa-remove"></button>
+</td>

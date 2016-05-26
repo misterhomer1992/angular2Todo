@@ -9,3 +9,7 @@ body {
 .table-striped tbody tr {
     background-color: rgba(249, 249, 249, 0.6) !important;
 }
+
+todo-item {
+    display: table-row;
+}

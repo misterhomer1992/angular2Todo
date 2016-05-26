@@ -1,0 +1,30 @@
+<!--<div class="todo-task-component__list" *ngIf="tasks.length > 0">-->
+    <!--<table class="table table-striped todo-task-component__list__table">-->
+        <!--<thead>-->
+        <!--<tr class="color&#45;&#45;white">-->
+            <!--<th>№</th>-->
+            <!--<th>Task</th>-->
+            <!--<th></th>-->
+        <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+        <!--<tr *ngFor="let taskItem of tasks; let index = index">-->
+        <!--</tr>-->
+        <!--</tbody>-->
+    <!--</table>-->
+<!--</div>-->
+
+<div class="todo-task-component__list">
+    <table class="table table-striped todo-task-component__list__table">
+        <thead>
+        <tr class="color--white">
+            <th>№</th>
+            <th>Task</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <todo-item *ngFor="let todo of todos" [todo]="todo" (removeTodo)="removeTodo($event)"></todo-item>
+        </tbody>
+    </table>
+</div>
