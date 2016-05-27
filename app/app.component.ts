@@ -1,16 +1,18 @@
-import {Component} from '@angular/core';
+import {Component, Output, EventEmitter} from '@angular/core';
 import {TodoList} from './todo/todo-list.component';
+import {TodoAdd} from './todo/todo-add.component';
 import {Todo} from './todo/todo';
 
 @Component({
     selector: 'todo-app',
     templateUrl: './app/app.component.html',
     styleUrls: ['./app/app.component.css'],
-    directives: [TodoList]
+    directives: [TodoList, TodoAdd]
 })
 
 
 export class AppComponent {
+    @Output() addTodoToList = new EventEmitter();
     todos:Todo[];
     todo:Todo = new Todo();
 
@@ -22,18 +24,7 @@ export class AppComponent {
         ];
     }
 
-    //events
-    action_addTask() {
-        if (this.todo.task.length === 0) {
-            return;
-        }
-
-        this.todos.push(this.todo);
-        console.info(`added new task ${this.todo.task}`);
-        this.todo = new Todo();
-    }
-
-    event__onSubmit_addNewTask() {
-        this.action_addTask()
+    addTodo(todo: Todo) {
+        this.addTodoToList.emit(todo);
     }
 }

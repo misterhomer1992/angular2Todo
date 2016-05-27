@@ -17,4 +17,14 @@ export class TodoList {
             this.todos.splice(todoIndex, 1);
         }
     }
+
+    addTodo(todo: TodoItem) {
+        debugger
+        this.todos.push(todo);
+        //console.info(`added new task: ${todo.task}`);
+    }
+
+    addTodoToList() {
+        debugger
+    }
 }
