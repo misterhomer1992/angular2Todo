@@ -1,15 +1,14 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {Todo} from './todo';
-import {TodoItem} from './todo-item.component';
+import {Todo} from '../../todoClass';
 
 @Component({
     selector: 'todo-add',
-    templateUrl: './app/todo/todo-add.component.html'
+    moduleId: module.id,
+    templateUrl: './todo-add.component.html'
 })
 
 export class TodoAdd {
     @Input() todo:Todo;
-    @Input() todos:TodoItem[];
     @Output() addTodo = new EventEmitter();
 
     action_addTask() {

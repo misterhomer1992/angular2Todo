@@ -1,9 +1,10 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {Todo} from './todo';
+import {Todo} from '../../todoClass';
 
 @Component({
     selector: 'todo-item',
-    templateUrl: './app/todo/todo-item.component.html'
+    moduleId: module.id,
+    templateUrl: './todo-item.component.html'
 })
 
 export class TodoItem {
